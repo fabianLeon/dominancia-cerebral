@@ -1,0 +1,57 @@
+<mat-card class="containerTest">
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel> MAPA # 1 Seleccione al menos 7 palabras</ng-template>
+                <mat-selection-list #mapa1>
+                    <mat-list-option *ngFor="let palabra of mapa1Info">
+                        {{palabra}}
+                    </mat-list-option>
+                </mat-selection-list>
+                <mat-divider></mat-divider>
+                <div>
+                    <button mat-button matStepperNext color="primary" (click)="Siguiente1()">Siguiente</button>
+                </div>
+                <mat-form-field class="hidden">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl">
+                </mat-form-field>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>MAPA # 2 Seleccione al menos 7 palabras</ng-template>
+                <mat-selection-list #mapa2>
+                    <mat-list-option *ngFor="let palabra of mapa2Info">
+                        {{palabra}}
+                    </mat-list-option>
+                </mat-selection-list>
+                <mat-divider></mat-divider>
+                <div>
+                    <button mat-button matStepperPrevious>Atras</button>
+                    <button mat-button matStepperNext color="primary" (click)="Siguiente2()">Siguiente</button>
+                </div>
+                <mat-form-field class="hidden">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY">
+                </mat-form-field>
+                <div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>MAPA # 3 Seleccione al menos 7 palabras</ng-template>
+            <mat-selection-list #mapa3>
+                <mat-list-option *ngFor="let palabra of mapa3Info">
+                    {{palabra}}
+                </mat-list-option>
+            </mat-selection-list>
+            <mat-divider></mat-divider>
+            <div>
+                <button mat-button matStepperPrevious>Atras</button>
+                <button mat-button (click)="limpiar()">Limpiar</button>
+                <button mat-button matStepperNext color="primary" (click)="Siguiente3()">Calcular</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</mat-card>
