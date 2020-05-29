@@ -1,7 +1,13 @@
 .containerTest {
-    width: 960px;
+    width: 720px;
 }
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .containerTest {
+        width: 100%
+    }
 }
