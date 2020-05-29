@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class DominanciaService {
     'mapa2-palabra2', 'mapa2-palabra2', 'mapa2-palabra3'
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   
   calcularDominancia(palabras) {
@@ -49,6 +50,14 @@ export class DominanciaService {
       calculoCuadranteA,
     ];
     this.dominancia.next(cuadrantes);
+  }
+
+  navegateTest(){
+    this.router.navigateByUrl('/test');
+  }
+
+  navegateChart(){
+    this.router.navigateByUrl('/chart');
   }
 
 }

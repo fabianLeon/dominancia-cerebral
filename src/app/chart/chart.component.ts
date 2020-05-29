@@ -9,23 +9,26 @@ import { DominanciaService } from '../dominancia.service';
 })
 export class ChartComponent implements OnInit {
   /**
- * The ChartJS Object
- * @var {any} chart
- */
+   * The ChartJS Object
+   * @var {any} chart
+   */
   public chart: any = null;
-
-
+  
+  
   constructor(private dominancia: DominanciaService) { }
-
+  
+  atras(){
+    this.dominancia.navegateTest();
+  }
+  
   ngOnInit(): void {
+    Chart.defaults.polarArea.animation.animateScale = false;
     let chartColors = {
       red: 'rgb(235, 47, 6)',
       yellow: 'rgb(251, 197, 49)',
       green: 'rgb(76, 209, 55)',
       blue: 'rgb(0, 168, 255)',
     };
-
-
 
     this.chart = new Chart('dominancia', {
       type: 'polarArea',
