@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +37,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSnackBarModule,
     MatChipsModule,
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent],
   exports: [TestComponent]
 })
