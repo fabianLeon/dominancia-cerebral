@@ -3,3 +3,16 @@
     margin-top: 20px;
 }
 
+
+@media screen and (max-width: 720px) {
+    .containerChart {
+        width: 576px
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .containerChart {
+        width: 400px
+    }
+}
