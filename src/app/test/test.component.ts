@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DominanciaService } from '../dominancia.service';
-
-const PALABRAS_MINIMAS = 2;
+import { mapa1, mapa2, mapa3 } from './mapasCuadrantes';
+const PALABRAS_MINIMAS = 8;
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -16,28 +16,25 @@ export class TestComponent implements OnInit {
   @ViewChild('mapa2') mapa2: any;
   @ViewChild('mapa3') mapa3: any;
 
-  mapa1Info: string[] = [
-    'mapa1-palabra1', 'mapa1-palabra2', 'mapa1-palabra3', 'mapa1-palabra4',
-  ];
-  mapa2Info: string[] = [
-    'mapa2-palabra1', 'mapa2-palabra2', 'mapa2-palabra3'
-  ];
-  mapa3Info: string[] = [
-    'mapa3-palabra1', 'mapa3-palabra2', 'mapa3-palabra3'
-  ];
+  mapa1Info: any;
+  mapa2Info: any;
+  mapa3Info: any;
 
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  selectedMapa1: any;
-  selectedMapa2: any;
-  selectedMapa3: any;
+  selectedMapa1: any = [];
+  selectedMapa2: any = [];
+  selectedMapa3: any = [];
   constructor(
     private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private dominancia: DominanciaService,
   ) {
+    this.mapa1Info = mapa1.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+    this.mapa2Info = mapa2.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+    this.mapa3Info = mapa3.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -59,7 +56,7 @@ export class TestComponent implements OnInit {
   }
 
   validator1() {
-    if (this.mapa1.selectedOptions.selected.length === PALABRAS_MINIMAS) {
+    if (this.selectedMapa1.length === PALABRAS_MINIMAS) {
       this.firstFormGroup.setValue({ firstCtrl: 'NewData' });
     } else {
       this.firstFormGroup.setValue({ firstCtrl: '' });
@@ -67,7 +64,8 @@ export class TestComponent implements OnInit {
   }
 
   validator2() {
-    if (this.mapa2.selectedOptions.selected.length === PALABRAS_MINIMAS) {
+    console.log()
+    if (this.selectedMapa2.length === PALABRAS_MINIMAS) {
       this.secondFormGroup.setValue({ secondCtrl: 'NewData' });
     } else {
       this.secondFormGroup.setValue({ secondCtrl: '' });
@@ -75,35 +73,71 @@ export class TestComponent implements OnInit {
   }
 
   Siguiente1() {
-    this.selectedMapa1 = this.mapa1.selectedOptions.selected.map((item: any) => {
-      return item._text.nativeElement.innerText
-    });
     this.validacionMensaje(this.selectedMapa1);
   }
 
   Siguiente2() {
-    this.selectedMapa2 = this.mapa2.selectedOptions.selected.map((item: any) => {
-      return item._text.nativeElement.innerText
-    });
     this.validacionMensaje(this.selectedMapa2);
   }
 
   Siguiente3() {
-    this.selectedMapa3 = this.mapa3.selectedOptions.selected.map((item: any) => {
-      return item._text.nativeElement.innerText
-    });
     if (this.validacionMensaje(this.selectedMapa3)) {
       this.dominancia.calcularDominancia([...this.selectedMapa1, ...this.selectedMapa2, ...this.selectedMapa3]);
-      this.dominancia.navegateChart()
+      this.dominancia.navegateChart();
     }
 
   }
 
+  select(mapa, palabra){
+    palabra.selected = !palabra.selected;
+    if(!palabra.selected){
+      palabra.color = 'accent'
+    }else {
+      palabra.color = 'primary'
+    }
+    return (mapa.filter((palabra)=>(palabra.selected))).map((p)=>(p.palabra));
+  }
+  
+  selectMapa1(palabra){
+    if(this.selectedMapa1.length < this.palabras_minimas){
+      this.selectedMapa1 = this.select(this.mapa1Info, palabra);
+      this.validator1();
+    } else {
+      const message = `Puede seleccionar máximo ${PALABRAS_MINIMAS}`;
+      this.openSnackBar(message);
+    }
+  }
+
+  selectMapa2(palabra){
+    if(this.selectedMapa2.length < this.palabras_minimas){
+      this.selectedMapa2 = this.select(this.mapa2Info, palabra);
+      this.validator2();
+    } else {
+      const message = `Puede seleccionar máximo ${PALABRAS_MINIMAS}`;
+      this.openSnackBar(message);
+    }
+  }
+
+  selectMapa3(palabra){
+    if(this.selectedMapa3.length < this.palabras_minimas){
+      this.selectedMapa3 = this.select(this.mapa3Info, palabra);
+    }else {
+      const message = `Puede seleccionar máximo ${PALABRAS_MINIMAS}`;
+      this.openSnackBar(message);
+    }
+  }
+
+
+
   limpiar() {
-    this.mapa1.deselectAll();
-    this.mapa2.deselectAll();
-    this.mapa3.deselectAll();
-    this.dominancia.calcularDominancia([100, 100, 100]);
+    
+    this.mapa1Info = mapa1.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+    this.mapa2Info = mapa2.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+    this.mapa3Info = mapa3.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+
+    this.selectedMapa1 = [];
+    this.selectedMapa2 = [];
+    this.selectedMapa3 = [];
 
   }
 
