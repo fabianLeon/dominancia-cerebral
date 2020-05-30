@@ -6,6 +6,11 @@
     display: none;
 }
 
+
+.chip-container {
+    min-width: 100px;
+}
+
 @media screen and (max-width: 720px) {
     .containerTest {
         width: 100%
