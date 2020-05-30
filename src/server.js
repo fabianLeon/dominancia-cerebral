@@ -7,7 +7,12 @@ app.use(express.static(__dirname+'/../dist/dominancia'));
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/../dist/dominancia/index.html'));
 });
-
+app.get('/test',function(req,res){
+    res.sendFile(path.join(__dirname+'/../dist/dominancia/index.html'));
+});
+app.get('/chart',function(req,res){
+    res.sendFile(path.join(__dirname+'/../dist/dominancia/index.html'));
+});
 console.log(__dirname)
 
 app.listen(process.env.PORT || 3000);

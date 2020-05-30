@@ -21,22 +21,22 @@ export class DominanciaService {
   calcularDominancia(palabras) {
     const calculoCuadranteD = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteD.filter((data) => (data === palabra));
-      return palabrasEncontradas.length;
+      return (palabrasEncontradas.length/this.CuadranteD.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteC = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteC.filter((data) => (data === palabra));
-      return palabrasEncontradas.length;
+      return (palabrasEncontradas.length/this.CuadranteC.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteB = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteB.filter((data) => (data === palabra));
-      return palabrasEncontradas.length;
+      return (palabrasEncontradas.length/this.CuadranteB.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteA = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteA.filter((data) => (data === palabra));
-      return palabrasEncontradas.length;
+      return (palabrasEncontradas.length/this.CuadranteA.length);
     })).reduce((a,b) => a + b );
 
     let cuadrantes = [
