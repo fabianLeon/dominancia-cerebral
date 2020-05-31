@@ -3,6 +3,37 @@
     margin-top: 20px;
 }
 
+.contenedor-color {
+    padding: 20px ;
+    width: auto;
+    height: 30px;
+    font-size: 40px ;
+}
+
+.resultado {
+    display: flex;
+}
+
+.amarillo {
+    background-color: rgb(251, 197, 49);
+    color: #fff
+}
+
+.rojo {
+    background-color: rgb(235, 47, 6);
+    color: #fff
+}
+
+.azul {
+    background-color: rgb(0, 168, 255);
+    color: #fff
+}
+
+.verde {
+    background-color: rgb(76, 209, 55);
+    color: #fff
+}
+
 
 @media screen and (max-width: 720px) {
     .containerChart {

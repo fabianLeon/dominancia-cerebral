@@ -40,10 +40,10 @@ export class DominanciaService {
     })).reduce((a,b) => a + b );
 
     let cuadrantes = [
-      calculoCuadranteD,
-      calculoCuadranteC,
-      calculoCuadranteB,
-      calculoCuadranteA,
+      (calculoCuadranteD*100).toFixed(2),
+      (calculoCuadranteC*100).toFixed(2),
+      (calculoCuadranteB*100).toFixed(2),
+      (calculoCuadranteA*100).toFixed(2),
     ];
     this.dominancia.next(cuadrantes);
   }

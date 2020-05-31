@@ -13,22 +13,39 @@ export class ChartComponent implements OnInit {
    * @var {any} chart
    */
   public chart: any = null;
-  
-  
-  constructor(private dominancia: DominanciaService) { }
-  
-  atras(){
+  public resultados: any;
+  chartColors = {
+    red: 'rgb(235, 47, 6)',
+    yellow: 'rgb(251, 197, 49)',
+    green: 'rgb(76, 209, 55)',
+    blue: 'rgb(0, 168, 255)',
+  };
+
+  constructor(private dominancia: DominanciaService) {
+
+    this.resultados = [
+      {
+        color: 'amarillo',
+        data: 100
+      }, {
+        color: 'verde',
+        data: 100
+      }, {
+        color: 'rojo',
+        data: 100
+      }, {
+        color: 'azul',
+        data: 100
+      },
+    ];
+   }
+
+  atras() {
     this.dominancia.navegateTest();
   }
-  
+
   ngOnInit(): void {
     Chart.defaults.polarArea.animation.animateScale = false;
-    let chartColors = {
-      red: 'rgb(235, 47, 6)',
-      yellow: 'rgb(251, 197, 49)',
-      green: 'rgb(76, 209, 55)',
-      blue: 'rgb(0, 168, 255)',
-    };
 
     this.chart = new Chart('dominancia', {
       type: 'polarArea',
@@ -39,10 +56,10 @@ export class ChartComponent implements OnInit {
         datasets: [{
           data: [100, 100, 100, 100],
           backgroundColor: [
-            chartColors.yellow,
-            chartColors.red,
-            chartColors.green,
-            chartColors.blue,
+            this.chartColors.yellow,
+            this.chartColors.red,
+            this.chartColors.green,
+            this.chartColors.blue,
           ],
         }],
 
@@ -57,15 +74,30 @@ export class ChartComponent implements OnInit {
 
     })
     this.dominancia.$dominancia.subscribe((data) => {
-      if (data.length > 0){
-        console.log(data);
+      if (data.length > 0) {
+        this.resultados = [
+          {
+            color: 'amarillo',
+            data: data[0]
+          }, {
+            color: 'verde',
+            data: data[1]
+          }, {
+            color: 'rojo',
+            data: data[2]
+          }, {
+            color: 'azul',
+            data: data[3]
+          },
+        ];
+
         this.chart.data.datasets = [{
           data: data,
           backgroundColor: [
-            chartColors.yellow,
-            chartColors.red,
-            chartColors.green,
-            chartColors.blue,
+            this.chartColors.yellow,
+            this.chartColors.red,
+            this.chartColors.green,
+            this.chartColors.blue,
           ],
         }]
       }
