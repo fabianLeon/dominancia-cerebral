@@ -25,20 +25,22 @@ export class ChartComponent implements OnInit {
 
     this.resultados = [
       {
+        color: 'azul',
+        data: 100
+      },
+      {
         color: 'amarillo',
         data: 100
-      }, {
+      },
+      {
         color: 'verde',
         data: 100
       }, {
         color: 'rojo',
         data: 100
-      }, {
-        color: 'azul',
-        data: 100
       },
     ];
-   }
+  }
 
   atras() {
     this.dominancia.navegateTest();
@@ -77,17 +79,17 @@ export class ChartComponent implements OnInit {
       if (data.length > 0) {
         this.resultados = [
           {
+            color: 'azul',
+            data: data[3]
+          }, {
             color: 'amarillo',
             data: data[0]
           }, {
             color: 'verde',
-            data: data[1]
-          }, {
-            color: 'rojo',
             data: data[2]
           }, {
-            color: 'azul',
-            data: data[3]
+            color: 'rojo',
+            data: data[1]
           },
         ];
 

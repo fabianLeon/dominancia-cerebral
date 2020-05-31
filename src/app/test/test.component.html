@@ -2,19 +2,22 @@
     <mat-vertical-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel> MAPA # 1 Seleccione {{palabras_minimas}} palabras</ng-template>
-                <mat-chip-list aria-label="Fish selection">
-                    <div class="chip-container" *ngFor="let palabra of mapa1Info">  
-                        <mat-chip [color]="palabra.color" selected (click)="selectMapa1(palabra)">{{palabra.palabra}}</mat-chip>
-                    </div>
-                </mat-chip-list>
+                <div class="palabras-container">
+                    <ng-template matStepLabel> MAPA # 1 Seleccione {{palabras_minimas}} palabras</ng-template>
+                    <mat-chip-list aria-label="Fish selection">
+                        <div class="chip-container" *ngFor="let palabra of mapa1Info">
+                            <mat-chip [color]="palabra.color" selected (click)="selectMapa1(palabra)">
+                                {{palabra.palabra}}</mat-chip>
+                        </div>
+                    </mat-chip-list>
+                </div>
                 <mat-divider></mat-divider>
                 <div>
                     {{ selectedMapa1.length }} de {{palabras_minimas}}
                     <button mat-button matStepperNext color="primary" (click)="Siguiente1()">Siguiente</button>
                 </div>
                 <mat-form-field class="hidden">
-                <!-- <mat-form-field> -->
+                    <!-- <mat-form-field> -->
                     <mat-label>Name</mat-label>
                     <input matInput placeholder="Last name, First name" formControlName="firstCtrl">
                 </mat-form-field>
@@ -23,11 +26,14 @@
         <mat-step [stepControl]="secondFormGroup" (click)="Siguiente1()">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>MAPA # 2 Seleccione {{palabras_minimas}} palabras</ng-template>
-                <mat-chip-list aria-label="Fish selection">
-                    <div class="chip-container" *ngFor="let palabra2 of mapa2Info">  
-                        <mat-chip [color]="palabra2.color" selected (click)="selectMapa2(palabra2)">{{palabra2.palabra}}</mat-chip>
-                    </div>
-                </mat-chip-list>
+                <div class="palabras-container">
+                    <mat-chip-list aria-label="Fish selection">
+                        <div class="chip-container" *ngFor="let palabra2 of mapa2Info">
+                            <mat-chip [color]="palabra2.color" selected (click)="selectMapa2(palabra2)">
+                                {{palabra2.palabra}}</mat-chip>
+                        </div>
+                    </mat-chip-list>
+                </div>
                 <mat-divider></mat-divider>
                 <div>
                     {{ selectedMapa2.length }} de {{palabras_minimas}}
@@ -35,7 +41,7 @@
                     <button mat-button matStepperNext color="primary" (click)="Siguiente2()">Siguiente</button>
                 </div>
                 <mat-form-field class="hidden">
-                <!-- <mat-form-field> -->
+                    <!-- <mat-form-field> -->
                     <mat-label>Address</mat-label>
                     <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY">
                 </mat-form-field>
@@ -45,11 +51,14 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>MAPA # 3 Seleccione {{palabras_minimas}} palabras</ng-template>
-            <mat-chip-list aria-label="Fish selection">
-                <div class="chip-container" *ngFor="let palabra3 of mapa3Info">  
-                    <mat-chip [color]="palabra3.color" selected (click)="selectMapa3(palabra3)">{{palabra3.palabra}}</mat-chip>
-                </div>
-            </mat-chip-list>
+            <div class="palabras-container">
+                <mat-chip-list aria-label="Fish selection">
+                    <div class="chip-container" *ngFor="let palabra3 of mapa3Info">
+                        <mat-chip [color]="palabra3.color" selected (click)="selectMapa3(palabra3)">{{palabra3.palabra}}
+                        </mat-chip>
+                    </div>
+                </mat-chip-list>
+            </div>
             <mat-divider></mat-divider>
             <div>
                 {{ selectedMapa3.length }} de {{palabras_minimas}}
