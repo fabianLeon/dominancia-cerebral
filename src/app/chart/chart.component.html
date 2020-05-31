@@ -1,5 +1,16 @@
+<button mat-button color="primary" (click)="atras()">Atras</button>
 <mat-card class="containerChart">
-    <button mat-button color="primary" (click)="atras()">Atras</button>
     Resultado test dominancia cerebral
-    <canvas id="dominancia" style="width:50%" >{{chart}}</canvas>
+    <canvas id="dominancia"></canvas>
+</mat-card>
+
+<mat-card class="containerChart">
+    Resultado test dominancia cerebral
+
+    <div class="resultado" *ngFor="let resultado of resultados">
+        <div class="contenedor-color" [ngClass]="resultado.color">
+            {{resultado.data}} %
+        </div>
+       
+    </div>
 </mat-card>
