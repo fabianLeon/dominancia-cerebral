@@ -15,36 +15,47 @@ export class DominanciaService {
   CuadranteB: string[]  = cuadranteB;
   CuadranteA: string[]  = cuadranteA;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    console.log("cuadranteD", this.CuadranteD.length)
+    console.log("cuadranteA", this.CuadranteA.length)
+    console.log("cuadranteC", this.CuadranteC.length)
+    console.log("cuadranteB", this.CuadranteB.length)
+  }
 
   
   calcularDominancia(palabras) {
     const calculoCuadranteD = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteD.filter((data) => (data === palabra));
-      return (palabrasEncontradas.length/this.CuadranteD.length);
+      return (palabrasEncontradas.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteC = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteC.filter((data) => (data === palabra));
-      return (palabrasEncontradas.length/this.CuadranteC.length);
+      return (palabrasEncontradas.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteB = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteB.filter((data) => (data === palabra));
-      return (palabrasEncontradas.length/this.CuadranteB.length);
+      return (palabrasEncontradas.length);
     })).reduce((a,b) => a + b );
 
     const calculoCuadranteA = (palabras.map((palabra) => { 
       const palabrasEncontradas = this.CuadranteA.filter((data) => (data === palabra));
-      return (palabrasEncontradas.length/this.CuadranteA.length);
+      return (palabrasEncontradas.length);
     })).reduce((a,b) => a + b );
 
+    const total = calculoCuadranteA + calculoCuadranteB + calculoCuadranteD + calculoCuadranteC;
     let cuadrantes = [
-      (calculoCuadranteD*100).toFixed(2),
-      (calculoCuadranteC*100).toFixed(2),
-      (calculoCuadranteB*100).toFixed(2),
-      (calculoCuadranteA*100).toFixed(2),
+      (calculoCuadranteD*100 / total).toFixed(2),
+      (calculoCuadranteC*100 / total).toFixed(2),
+      (calculoCuadranteB*100 / total).toFixed(2),
+      (calculoCuadranteA*100 / total).toFixed(2),
     ];
+    console.log("calculo cuadranteD", calculoCuadranteD)
+    console.log("calculo cuadranteC", calculoCuadranteC)
+    console.log("calculo cuadranteB", calculoCuadranteB)
+    console.log("calculo cuadranteA", calculoCuadranteA)
+
     this.dominancia.next(cuadrantes);
   }
 
