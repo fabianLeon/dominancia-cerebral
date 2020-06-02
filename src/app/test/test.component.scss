@@ -7,9 +7,8 @@
 }
 
 .palabras-container {
-    margin: 0px 10px 29px 10px
+    margin: 5px 10px 29px 10px;
 }
-
 
 .chip-container {
     min-width: 100px;
@@ -17,6 +16,8 @@
 
 @media screen and (max-width: 720px) {
     .containerTest {
-        width: 100%
+        width: 100%;
     }
 }
+
+

@@ -16,10 +16,10 @@ export class DominanciaService {
   CuadranteA: string[]  = cuadranteA;
 
   constructor(private router: Router) {
-    console.log("cuadranteD", this.CuadranteD.length)
-    console.log("cuadranteA", this.CuadranteA.length)
-    console.log("cuadranteC", this.CuadranteC.length)
-    console.log("cuadranteB", this.CuadranteB.length)
+    // console.log("cuadranteD", this.CuadranteD.length)
+    // console.log("cuadranteA", this.CuadranteA.length)
+    // console.log("cuadranteC", this.CuadranteC.length)
+    // console.log("cuadranteB", this.CuadranteB.length)
   }
 
   
@@ -51,10 +51,10 @@ export class DominanciaService {
       (calculoCuadranteB*100 / total).toFixed(2),
       (calculoCuadranteA*100 / total).toFixed(2),
     ];
-    console.log("calculo cuadranteD", calculoCuadranteD)
-    console.log("calculo cuadranteC", calculoCuadranteC)
-    console.log("calculo cuadranteB", calculoCuadranteB)
-    console.log("calculo cuadranteA", calculoCuadranteA)
+    // console.log("calculo cuadranteD", calculoCuadranteD)
+    // console.log("calculo cuadranteC", calculoCuadranteC)
+    // console.log("calculo cuadranteB", calculoCuadranteB)
+    // console.log("calculo cuadranteA", calculoCuadranteA)
 
     this.dominancia.next(cuadrantes);
   }

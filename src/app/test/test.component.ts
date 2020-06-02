@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DominanciaService } from '../dominancia.service';
@@ -64,7 +64,7 @@ export class TestComponent implements OnInit {
   }
 
   validator2() {
-    console.log()
+    
     if (this.selectedMapa2.length === PALABRAS_MINIMAS) {
       this.secondFormGroup.setValue({ secondCtrl: 'NewData' });
     } else {
@@ -87,8 +87,8 @@ export class TestComponent implements OnInit {
     }
 
   }
-
-  select(mapa, palabra){
+  
+  select(mapa, palabra: any){
     palabra.selected = !palabra.selected;
     if(!palabra.selected){
       palabra.color = 'accent'
