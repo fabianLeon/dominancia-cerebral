@@ -3,7 +3,7 @@
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
                 <div class="palabras-container">
-                    <ng-template matStepLabel> MAPA # 1 Seleccione {{palabras_minimas}} palabras</ng-template>
+                    <ng-template matStepLabel> {{labelPalabras}} </ng-template>
                     <mat-chip-list aria-label="Fish selection">
                         <div class="chip-container" *ngFor="let palabra of mapa1Info">
                             <mat-chip [color]="palabra.color" selected (click)="selectMapa1(palabra)">
@@ -25,7 +25,7 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup" (click)="Siguiente1()">
             <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>MAPA # 2 Seleccione {{palabras_minimas}} palabras</ng-template>
+                <ng-template matStepLabel> {{labelPalabras}} </ng-template>
                 <div class="palabras-container">
                     <mat-chip-list aria-label="Fish selection">
                         <div class="chip-container" *ngFor="let palabra2 of mapa2Info">
@@ -50,7 +50,7 @@
             </form>
         </mat-step>
         <mat-step (click)="Siguiente2()">
-            <ng-template matStepLabel>MAPA # 3 Seleccione {{palabras_minimas}} palabras</ng-template>
+            <ng-template matStepLabel> {{labelPalabras}} </ng-template>
             <div class="palabras-container">
                 <mat-chip-list aria-label="Fish selection">
                     <div class="chip-container" *ngFor="let palabra3 of mapa3Info">
