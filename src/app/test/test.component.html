@@ -49,7 +49,7 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step>
+        <mat-step (click)="Siguiente2()">
             <ng-template matStepLabel>MAPA # 3 Seleccione {{palabras_minimas}} palabras</ng-template>
             <div class="palabras-container">
                 <mat-chip-list aria-label="Fish selection">
