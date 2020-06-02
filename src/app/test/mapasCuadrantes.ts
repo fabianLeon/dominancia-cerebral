@@ -21,7 +21,7 @@ export const mapa1 = [
     "Conceptual",
     "Creativo",
     "Intuitivo",
-    "Cinestesico",
+    "Cinestésico",
     "Manual",
     "Planificador",
     "Implementador",
@@ -69,7 +69,7 @@ export const mapa2 = [
     "Musical",
     "Servicial",
     "Diestro",
-    "Cinestesico",
+    "Cinestésico",
     "Espiritual",
     "Educado",
     "Empatía",
@@ -308,3 +308,4 @@ export const cuadranteA = [
     "Diagnóstico",
     "Elocuente",
 ];
+
