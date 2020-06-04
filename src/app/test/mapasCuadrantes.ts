@@ -153,7 +153,7 @@ export const mapa2 = [
     basePalabras['APLICADO'],
     basePalabras['TEORICO'],
     basePalabras['INTELECTUAL'],
-    basePalabras['RESUELVE_PROBLEMAS '],
+    basePalabras['RESUELVE_PROBLEMAS'],
     basePalabras['FINANCIERO'],
     basePalabras['CONSTRUCTIVO'],
     basePalabras['VISUAL'],
