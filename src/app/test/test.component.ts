@@ -12,7 +12,7 @@ const PALABRAS_MINIMAS = 8;
 export class TestComponent implements OnInit {
 
   palabras_minimas = PALABRAS_MINIMAS;
-  labelPalabras = `Escoge las primeras ${PALABRAS_MINIMAS} con las que te identificas`;
+  labelPalabras = `Escoge las primeras ${PALABRAS_MINIMAS} palabras con las que te identificas`;
   @ViewChild('mapa1') mapa1: any;
   @ViewChild('mapa2') mapa2: any;
   @ViewChild('mapa3') mapa3: any;
