@@ -24,7 +24,6 @@ export class TestComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   selectedMapa1: any = [];
   selectedMapa2: any = [];
   selectedMapa3: any = [];
@@ -33,9 +32,9 @@ export class TestComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private dominancia: DominanciaService,
   ) {
-    this.mapa1Info = mapa1.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
-    this.mapa2Info = mapa2.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
-    this.mapa3Info = mapa3.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+    this.mapa1Info = mapa1.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
+    this.mapa2Info = mapa2.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
+    this.mapa3Info = mapa3.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -65,7 +64,7 @@ export class TestComponent implements OnInit {
   }
 
   validator2() {
-    
+
     if (this.selectedMapa2.length === PALABRAS_MINIMAS) {
       this.secondFormGroup.setValue({ secondCtrl: 'NewData' });
     } else {
@@ -88,19 +87,19 @@ export class TestComponent implements OnInit {
     }
 
   }
-  
-  select(mapa, palabra: any){
+
+  select(mapa, palabra: any) {
     palabra.selected = !palabra.selected;
-    if(!palabra.selected){
+    if (!palabra.selected) {
       palabra.color = 'accent'
-    }else {
+    } else {
       palabra.color = 'primary'
     }
-    return (mapa.filter((palabra)=>(palabra.selected))).map((p)=>(p.palabra));
+    return (mapa.filter((palabra) => (palabra.selected)));
   }
-  
-  selectMapa1(palabra){
-    if(this.selectedMapa1.length < this.palabras_minimas){
+
+  selectMapa1(palabra) {
+    if (this.selectedMapa1.length < this.palabras_minimas) {
       this.selectedMapa1 = this.select(this.mapa1Info, palabra);
       this.validator1();
     } else {
@@ -109,8 +108,8 @@ export class TestComponent implements OnInit {
     }
   }
 
-  selectMapa2(palabra){
-    if(this.selectedMapa2.length < this.palabras_minimas){
+  selectMapa2(palabra) {
+    if (this.selectedMapa2.length < this.palabras_minimas) {
       this.selectedMapa2 = this.select(this.mapa2Info, palabra);
       this.validator2();
     } else {
@@ -119,10 +118,10 @@ export class TestComponent implements OnInit {
     }
   }
 
-  selectMapa3(palabra){
-    if(this.selectedMapa3.length < this.palabras_minimas){
+  selectMapa3(palabra) {
+    if (this.selectedMapa3.length < this.palabras_minimas) {
       this.selectedMapa3 = this.select(this.mapa3Info, palabra);
-    }else {
+    } else {
       const message = `Puede seleccionar máximo ${PALABRAS_MINIMAS}`;
       this.openSnackBar(message);
     }
@@ -131,10 +130,10 @@ export class TestComponent implements OnInit {
 
 
   limpiar() {
-    
-    this.mapa1Info = mapa1.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
-    this.mapa2Info = mapa2.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
-    this.mapa3Info = mapa3.map((data)=> {return {palabra: data, selected: false, color: 'accent'}});
+
+    this.mapa1Info = mapa1.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
+    this.mapa2Info = mapa2.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
+    this.mapa3Info = mapa3.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
 
     this.selectedMapa1 = [];
     this.selectedMapa2 = [];
