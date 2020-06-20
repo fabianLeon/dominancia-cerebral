@@ -46,6 +46,13 @@ export class ChartComponent implements OnInit {
     this.dominancia.navegateTest();
   }
 
+  ngAfterViewInit() {
+    if (this.resultados[0].data == 100 && this.resultados[1].data == 100
+      && this.resultados[2].data == 100 && this.resultados[3].data == 100) {
+      this.dominancia.navegateTest();
+    }
+  }
+
   ngOnInit(): void {
     Chart.defaults.polarArea.animation.animateScale = false;
 
