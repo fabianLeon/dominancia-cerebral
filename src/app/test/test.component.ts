@@ -99,7 +99,7 @@ export class TestComponent implements OnInit {
   }
 
   selectMapa1(palabra) {
-    console.log(palabra);
+    // console.log(palabra);
     if (this.selectedMapa1.length < this.palabras_minimas || palabra.selected) {
       this.selectedMapa1 = this.select(this.mapa1Info, palabra);
       this.validator1();
