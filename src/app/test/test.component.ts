@@ -99,7 +99,8 @@ export class TestComponent implements OnInit {
   }
 
   selectMapa1(palabra) {
-    if (this.selectedMapa1.length < this.palabras_minimas) {
+    console.log(palabra);
+    if (this.selectedMapa1.length < this.palabras_minimas || palabra.selected) {
       this.selectedMapa1 = this.select(this.mapa1Info, palabra);
       this.validator1();
     } else {
@@ -109,7 +110,8 @@ export class TestComponent implements OnInit {
   }
 
   selectMapa2(palabra) {
-    if (this.selectedMapa2.length < this.palabras_minimas) {
+
+    if (this.selectedMapa2.length < this.palabras_minimas || palabra.selected) {
       this.selectedMapa2 = this.select(this.mapa2Info, palabra);
       this.validator2();
     } else {
@@ -119,7 +121,7 @@ export class TestComponent implements OnInit {
   }
 
   selectMapa3(palabra) {
-    if (this.selectedMapa3.length < this.palabras_minimas) {
+    if (this.selectedMapa3.length < this.palabras_minimas || palabra.selected) {
       this.selectedMapa3 = this.select(this.mapa3Info, palabra);
     } else {
       const message = `Puede seleccionar máximo ${PALABRAS_MINIMAS}`;
@@ -131,9 +133,9 @@ export class TestComponent implements OnInit {
 
   limpiar() {
 
-    this.mapa1Info = mapa1.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
-    this.mapa2Info = mapa2.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
-    this.mapa3Info = mapa3.map((data) => { return { palabra: data, selected: false, color: 'accent' } });
+    this.mapa1Info = mapa1.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
+    this.mapa2Info = mapa2.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
+    this.mapa3Info = mapa3.map((data: any) => { return { ...data, ...{ selected: false, color: 'accent' } } });
 
     this.selectedMapa1 = [];
     this.selectedMapa2 = [];
