@@ -28,10 +28,6 @@ export class DominanciaService {
       (calculoCuadranteB * 100 / total).toFixed(2),
       (calculoCuadranteA * 100 / total).toFixed(2),
     ];
-    console.log("c", calculoCuadranteD)
-    console.log("d", calculoCuadranteC)
-    console.log("b", calculoCuadranteB)
-    console.log("a", calculoCuadranteA)
 
     this.dominancia.next(cuadrantes);
   }
