@@ -1,4 +1,6 @@
-# Dominancia
+# Dominancia cerebral
+
+Este proyecto es un simple test del modelo de los cuadrantes cerebrales de Herrmann [Link](https://cerebrosconectados.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
